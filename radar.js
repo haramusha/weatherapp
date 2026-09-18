@@ -35,19 +35,13 @@ async function sprawdzPogode(miasto) {
                 poleOpisu.innerText = `${dzisiejszaData} | ${dane.opis}`;
             }
             wynikDiv.innerHTML = `
-                <div id="sum-circles">
-                    <div class="circle">
-                        <p>${dane.temperatura}°C</p>
-                        <img src="/static/temp-icon.png" alt="Temperatura" width="35" height="35">
-                    </div>
-                    <div class="circle">
-                        <p>${dane.wilgotnosc}%</p>
-                        <img src="/static/rain-icon.png" alt="Temperatura" width="35" height="35">
-                    </div>
-                    <div class="circle">
-                        <p>${dane.wiatr}km/h</p>
-                        <img src="/static/wind-icon.png" alt="Temperatura" width="35" height="35">
-                    </div>
+                <div id="radar-container" style="width: 80%; margin-top: 10px; border-radius: 20px; overflow: hidden;">
+                    <iframe
+                        width="100%"
+                        height="450"
+                        src="https://embed.windy.com/embed.html?type=map&location=coordinates&lat=${dane.lat}&lon=${dane.lon}&detailLat=${dane.lat}&detailLon=${dane.lon}&metricRain=mm&metricTemp=°C&metricWind=km/h&zoom=11&overlay=radar&product=radar&marker=true"
+                    frameborder="0">
+                     </iframe>
                 </div>
             `;
         } else {

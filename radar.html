@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Radar Pogodowy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/weather-style.css">
+
+
+    <script src="/static/radar.js" defer></script>
+</head>
+<body>
+
+    <div id="main-radar-container">
+
+        <h2 id="miastoWynik" style="color:#fff">Ładowanie...</h2>
+        <p id="data-opis" ></p>
+
+
+        <div id="wynik"></div>
+
+        <div class="quick-nav">
+            <button class="quick-bttn" onclick="goTo('weather')">Pogoda</button>
+            <button class="quick-bttn active" onclick="goTo('radar')">Radar</button>
+            <button class="quick-bttn" onclick="goTo('warnings')">Ostrzeżenia</button>
+        </div>
+
+        <button id="return-bttn" onclick="goTo('panel')">&larr; Powrót</button>
+
+    </div>
+
+</body>
+</html>

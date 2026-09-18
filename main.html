@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Meteo App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/weather-style.css">
+        <link rel="icon" type="image/png" href="../static/favicon.png">
+        <script src="{{ url_for('static', filename='weather.js', v=2) }}" defer></script>
+    </head>
+    <body>
+
+        <div id="main-container">
+            <h3>Stacja Meteo ☀️</h3>
+            <nav id="menu-nav">
+                <button class="nav-bttn" onclick="showView('pogoda)">Sprawdź pogodę</button>
+                <button class="nav-bttn" onclick="showRadar('radar')">Sprawdź radar pogodowy</button>
+                <button class="nav-bttn" onclick="showWarnings('warnings')">Sprawdź ostrzeżenia meteorologiczne</button>
+                <button id="return-bttn" onclick="window.location.href='/'">Powrót</button>
+            </nav>
+            <!--<input type="text" id="miastoInput" placeholder="Wpisz nazwę miasta">
+
+            <button onclick="sprawdzPogode()">Sprawdź pogodę</button>
+            <div id="wynik">
+                <span>Wpisz miasto, aby zobaczyć układ strony</span>
+            </div>
+
+
+
+            </div>
+        -->
+        </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="PL-pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Stacja Meteo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/weather-style.css">
+    <link rel="icon" type="image/png" href="../static/favicon.png">
+</head>
+<body>
+    <div id="index-titlebox">
+        <h3>Stacja Meteo ☀️</h3>
+        <span>Twoja stacja pogodowa!</span>
+    </div>
+
+    <form id="start-form" onsubmit="checkBefore(event)">
+
+        <input type="text" id="index-placeholder" name="miasto" placeholder="Wpisz nazwę miasta" required>
+        <div id="index-Error"></div>
+        <button type="submit" id="startBttn">Wyświetl informacje</button>
+    </form>
+
+<script>
+    async function checkBefore(event) {
+        event.preventDefault();
+
+        const miasto = document.getElementById("index-placeholder").value;
+        const errorDiv = document.getElementById("index-Error");
+        const przycisk = document.getElementById("startBttn");
+        const miastoSpan = document.getElementById("miastoWynik");
+
+        errorDiv.innerHTML = "<span style='color: white;'>Sprawdzanie poprawności miasta...</span>";
+        przycisk.disabled = true;
+
+        try {
+            const odpowiedz = await fetch("/api/pogoda", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({miasto: miasto})
+            });
+
+            const dane = await odpowiedz.json();
+
+            if(dane.sukces) {
+
+                window.location.href = `/panel?miasto=${miasto}`;
+
+
+            } else {
+
+                errorDiv.innerHTML = "<span style='color: red;'>Niepoprawne miasto. Spróbuj ponownie!</span>";
+                przycisk.disabled = false;
+            }
+        } catch(error) {
+            errorDiv.innerHTML = "<span style='color: red;'>Błąd serwera. Spróbuj ponownie!</span>";
+            przycisk.disabled = false;
+        }
+    }
+    </script>
+
+</body>
+</html>

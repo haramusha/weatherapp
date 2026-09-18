@@ -6,24 +6,21 @@
         <link rel="stylesheet" href="../static/weather-style.css">
         <link rel="icon" type="image/png" href="../static/favicon.png">
         <script src="{{ url_for('static', filename='weather.js', v=2) }}" defer></script>
-    </head> 
+    </head>
     <body>
 
-        <div id="main-container">
-            <h3>Stacja Meteo ☀️</h3>
-            <input type="text" id="miastoInput" placeholder="Wpisz nazwę miasta">
-
-            <button onclick="sprawdzPogode()">Sprawdź pogodę</button>
+        <div id="main-weather-container">
+            <div id="miasto-div">
+                <span id="miastoWynik"></span>
+                <p id="data-opis"></p>
+            </div>
             <div id="wynik">
-                <span>Wpisz miasto, aby zobaczyć układ strony</span>
             </div>
-
-
-
+            <div id="return-div">
+                <button id="return-bttn" onclick="goTo('panel')"><- Powrót</button>
+                <button class="nav-button" onclick="goTo('radar')">Radar Pogodowy</button>
+                 <button class="nav-button" onclick="goTo('warnings')">Ostrzeżenia</button>
             </div>
-
-        </div>
-
 
     </body>
 </html>
